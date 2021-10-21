@@ -16,15 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.reto4.sa.reto4.entity.Game;
 import com.reto4.sa.reto4.service.GamesService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
  * @author Administrador
  */
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("/api/Game")
 public class GamesController {
 
@@ -41,11 +44,11 @@ public class GamesController {
     public List<Game> findAllGames() {
         return servicio.getGamesAll();
     }
-
-    @GetMapping("/products/{id}")
-    public Game findGameId(@PathVariable int id) {
-        return servicio.getGameById(id);
-    }
+    //Not used
+//    @GetMapping("/products/{id}")
+//    public Game findGameId(@PathVariable int id) {
+//        return servicio.getGameById(id);
+//    }
 
     @PutMapping("/update")
     public ResponseEntity updateGame(@RequestBody Game game) {
@@ -53,9 +56,9 @@ public class GamesController {
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteGame(@RequestBody Game game) {
-        servicio.deleteGame(game);
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteGame(@PathVariable int id) {
+        servicio.deleteGame(id);
         return ResponseEntity.status(204).build();
     }
 

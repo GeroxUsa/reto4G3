@@ -44,8 +44,8 @@ public class GamesService {
         return repositorio.save(existeJuego);
     }
     //Delete
-    public String deleteGame(Game game){
-        repositorio.deleteById(game.getId());
-        return "Registro con id "+game.getId()+" ha sido eliminado";
+    public String deleteGame(int id){
+        repositorio.deleteById(id);
+        return "Registro con id "+id+" ha sido eliminado";
     }
 }

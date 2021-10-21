@@ -38,11 +38,11 @@ public class DepartamentoController {
     public List<Departamento> findAllDepartamentos(){
         return service.getDepartamentos();
     }
-    
-    @GetMapping("/{id}")    
-    public Departamento findDepartamentosId(@PathVariable int id){
-        return service.getDepartamentoById(id);
-    }
+    //Not Used
+//    @GetMapping("/{id}")    
+//    public Departamento findDepartamentosId(@PathVariable int id){
+//        return service.getDepartamentoById(id);
+//    }
     
      @PostMapping("/save")
     public ResponseEntity addDepartamento(@RequestBody Departamento departamento){
@@ -59,6 +59,6 @@ public class DepartamentoController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteDepartamento(@PathVariable int id){
         service.deleteDepartamento(id);
-        return ResponseEntity.status(201).build();
+        return ResponseEntity.status(204).build();
     }
 }

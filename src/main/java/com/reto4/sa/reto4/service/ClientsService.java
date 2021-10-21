@@ -37,8 +37,8 @@ public class ClientsService {
         return repositorio.save(existeCliente);
     }
     //Delete
-    public String deleteClient(Client client){
-        repositorio.deleteById(client.getIdClient());
-        return "Registro con id "+client.getIdClient()+" ha sido eliinado";
+    public String deleteClient(int id){
+        repositorio.deleteById(id);
+        return "Registro con id "+id+" ha sido eliinado";
     }
 }

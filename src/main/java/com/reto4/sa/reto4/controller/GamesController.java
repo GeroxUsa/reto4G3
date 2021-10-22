@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-@RequestMapping("/api/Game")
+@RequestMapping("/api/Game/")
 public class GamesController {
 
     @Autowired

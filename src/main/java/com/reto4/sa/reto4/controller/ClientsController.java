@@ -29,17 +29,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", methods={RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT, RequestMethod.DELETE})
-@RequestMapping("/api/Client")
+@RequestMapping("/api/Client/")
 public class ClientsController {
     @Autowired
     private ClientsService servicio;
     
-    @GetMapping("all")
+    @GetMapping("/all")
     public List<Client> findAllClient(){
         return servicio.getClientAll();
     }
     
-    @PostMapping("save")
+    @PostMapping("/save")
     public ResponseEntity addClient(@RequestBody Client client){
         servicio.saveClient(client);
         return ResponseEntity.status(201).build();

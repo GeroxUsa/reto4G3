@@ -17,31 +17,57 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ReservationService {
+	
+	/**
+	 * The repository.
+	 */
     @Autowired
     private ReservationRepository repositorio;
     
-    // CRUD Create, Read, Update, Delete
-    // Create
+    /**
+     * Método save
+     * 
+     * @param reservation
+     * @return
+     */
     public Reservation saveReservation(Reservation reservation){
         return repositorio.save(reservation);
     }
-    //Read
+    
+    /**
+     * Método findAll
+     * 
+     * @return
+     */
     public List<Reservation> getReservationAll(){
         return repositorio.findAll();
     }
-    //Update
+    
+    /*
+     * Método update
+     */
     public Reservation updateReservation(Reservation reservation){
         Reservation existeReservation=repositorio.findById(reservation.getIdReservation()).orElse(null);
         existeReservation.setStartDate(reservation.getStartDate());
         existeReservation.setDevolutionDate(reservation.getDevolutionDate());
         return repositorio.save(existeReservation);
     }
-    //Delete
+    
+    /**
+     * Método delete
+     * 
+     * @param id
+     */
     public void deleteReservation(int id){
         repositorio.deleteById(id);
     }
     
-    //Filtro por ID
+    /**
+     * Método findById
+     * 
+     * @param reservation
+     * @return
+     */
     public Reservation getReservationById(Reservation reservation){
         return repositorio.findById(reservation.getIdReservation()).orElse(null);
     }

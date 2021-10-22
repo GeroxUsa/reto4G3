@@ -4,13 +4,15 @@
  */
 package com.reto4.sa.reto4.controller;
 
-
 import com.reto4.sa.reto4.entity.Score;
 import com.reto4.sa.reto4.service.ScoreService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,5 +32,11 @@ public class ScoreController {
     @GetMapping("/all")
     public List<Score> findAllScore() {
         return servicio.getScoreAll();
+    }
+    
+    @PutMapping("/update")
+    public ResponseEntity updateScore(@RequestBody Score score) {
+        servicio.updateScore(score);
+        return ResponseEntity.status(201).build();
     }
 }

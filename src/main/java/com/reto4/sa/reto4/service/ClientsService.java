@@ -34,6 +34,7 @@ public class ClientsService {
         existeCliente.setName(client.getName());
         existeCliente.setEmail(client.getEmail());
         existeCliente.setAge(client.getAge());
+        existeCliente.setPassword(client.getPassword());
         return repositorio.save(existeCliente);
     }
     //Delete
